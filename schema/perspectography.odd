@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>PerspectOgraphy</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change who="aclark.ash" when="2015-11">Created first draft.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <schemaSpec ident="perspectography" source="tei:2.8.0" start="TEI">
+        <desc>A schema for the use of making various ographies.</desc>
+
+        <!-- 
+             The <moduleRef> elements specify which TEI modules will
+             be included in the schema. The value of the @key
+             attribute is the name of the module. The first four listed here 
+             are required: core, tei, header, textstructure. 
+        
+             To trim the contents of these modules, use @include OR @except:
+               - @include lists the elements from the module that will be included in the schema
+               - @except lists the elements from the module that will be excluded from the schema        
+        -->
+        <moduleRef key="core"
+          exclude="binaryObject cb distinct divGen gb graphic measure measureGrp media stage"/>
+        <moduleRef key="tei"/>
+        <moduleRef key="header"
+          exclude="biblFull cRefPattern calendar calendarDesc geoDecl stdVals scriptNote"/>
+        <moduleRef key="textstructure"
+          exclude="div1 div2 div3 div4 div5 div6 div7 imprimatur salute signed"/>
+        <moduleRef key="namesdates"
+          exclude="bloc climate population sex socecStatus terrain"/>
+        <moduleRef key="linking" exclude="join joinGrp"/>
+        
+        <elementSpec module="namesdates" ident="pcvdGender" mode="add">
+          <classes>
+            <memberOf key="model.persStateLike" mode="add"/>
+          </classes>
+          <attList>
+            <attDef ident="value" mode="add">
+              <desc>[fill in]</desc>
+              <datatype>
+                <macroRef key="data.enumerated"/>
+              </datatype>
+              <valList type="semi">
+                <valItem ident="genderqueer"></valItem>
+                <valItem ident="female"></valItem>
+                <valItem ident="male"></valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
+        <elementSpec module="core" ident="resp" mode="change">
+          <attList>
+            <attDef ident="relation" mode="add">
+              <desc>[fill in]</desc>
+              <datatype>
+                <macroRef key="data.enumerated"/>
+              </datatype>
+              <valList type="semi">
+                <valItem ident="abridger">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="adapter">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="artist">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="author">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="author of afterword, colophon, etc.">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="author of introduction, etc.">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="autographer">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="colorist">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="compiler">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="contributor">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="copyright holder">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="cover designer">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="creator">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="depicted">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="editor">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="editor of compilation">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="illustrator">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="inker">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="lender">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="letterer">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="other">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="photographer">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="publisher">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="translator">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="voice actor">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="writer of introduction">
+                  <desc>FIX ME</desc>
+                </valItem>
+                <valItem ident="writer of preface">
+                  <desc>FIX ME</desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>
