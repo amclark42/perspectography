@@ -6,7 +6,7 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>PerspectOgraphy</title>
+        <title>Perspectography</title>
       </titleStmt>
       <publicationStmt>
         <p>Publication Information</p>
@@ -16,6 +16,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="aclark.ash" when="2016-01">Added W3C date attributes to <gi>catRef</gi>.</change>
       <change who="aclark.ash" when="2015-11">Created first draft.</change>
     </revisionDesc>
   </teiHeader>
@@ -62,6 +63,12 @@
               </valList>
             </attDef>
           </attList>
+        </elementSpec>
+        
+        <elementSpec module="header" ident="catRef" mode="change">
+          <classes mode="change">
+            <memberOf key="att.datable.w3c" mode="add"/>
+          </classes>
         </elementSpec>
 
         <elementSpec module="core" ident="resp" mode="change">
