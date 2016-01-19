@@ -66,7 +66,7 @@ declare function og:get-bibliographic-data($entry as node()) as node() {
 
 declare 
   %rest:GET
-  %rest:path("/perspectography/{$datasetName}/books")
+  %rest:path("/perspectography/{$datasetName}/bibl")
   %output:media-type("application/json")
 function og:get-bibliography($datasetName) {
   let $dataset := $og:configFile//dataSet[@name eq $datasetName]
@@ -84,7 +84,7 @@ function og:get-bibliography($datasetName) {
       return xqjson:serialize-json($compiledData)
     else 
       <rest:response>
-        <http:response status="302">
+        <http:response status="404">
         </http:response>
       </rest:response>
 };
