@@ -1,0 +1,12 @@
+<meta xmlns="http://exist-db.org/xquery/repo">
+  <description>Perspectography</description>
+  <author>Ashley M. Clark</author>
+  <website>http://amclark42.net</website>
+  <status>alpha</status>
+  <license>GNU-LGPL</license>
+  <copyright>true</copyright>
+  <type>application</type>
+  <target>perspectography</target>
+  <prepare>pre-install.xql</prepare>
+  <finish/>
+</meta>

@@ -1,0 +1,4 @@
+<package xmlns="http://expath.org/ns/pkg" name="http://amclark42.net/perspectography" abbrev="perspectography" version="0.1" spec="1.0">
+  <title>Perspectography</title>
+  <dependency package="http://xqilla.sourceforge.net/pkg/xqjson" version="0.1.6"/>
+</package>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <dataSet name="sample">
+    <directoryPath target="/db/perspectography-data"/>
+  </dataSet>
+</config>
