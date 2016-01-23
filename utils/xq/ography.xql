@@ -37,7 +37,33 @@ declare function og:get-bibliographic-data($entry as node()) as node() {
   <pair type="object">
     <pair name="id" type="string">{data($entry/@xml:id)}</pair>
     <pair name="title" type="string">{normalize-space(string-join($entry//tei:monogr/tei:title[1]//text(),' '))}</pair>
-    <pair name="creators" type="array"></pair>
+    <pair name="creators" type="array">
+      {
+        for $creator in $entry//(tei:author|tei:editor|tei:respStmt) (: |tei:publisher :)
+                              /(tei:persName|tei:name|tei:orgName)
+        let $nameRef := if ( $creator[parent::tei:publisher] ) then
+                          $creator/text()
+                        else
+                          $creator/data(@ref)
+        return 
+          <item type="object">
+            <pair name="pid" type="string">{$nameRef}</pair>
+            <pair name="roles" type="array">
+              {
+                for $element in $creator/parent::*/name()
+                let $roles := if ( $element eq 'respStmt' ) then
+                                for $resp in $creator/parent::tei:respStmt/tei:resp
+                                return 
+                                  <item type="string">
+                                    { $resp/data(@relation) }
+                                  </item>
+                              else <item type="string">{ $element }</item>
+                return $roles
+              }
+            </pair>
+          </item>
+      }
+    </pair>
     {
       if ( $entry//tei:series ) then
         <pair name="series" type="array">
