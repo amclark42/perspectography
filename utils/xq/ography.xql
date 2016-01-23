@@ -9,6 +9,8 @@ declare namespace http="http://expath.org/ns/http-client";
 declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
+(:declare option output:encoding "UTF-8";:)
+
 (:~
  : A library of RESTXQ functions.
  : 
@@ -54,9 +56,7 @@ declare function og:get-bibliographic-data($entry as node()) as node() {
             for $tag in $entry//tei:catRef
             let $catDesc := data($tag/@target)
             return
-              (:<item type="object">:)
-                <item type="string">{$catDesc}</item>
-              (:</item>:)
+              <item type="string">{$catDesc}</item>
           }
         </pair>
       else ()
@@ -67,7 +67,11 @@ declare function og:get-bibliographic-data($entry as node()) as node() {
 declare 
   %rest:GET
   %rest:path("/perspectography/{$datasetName}/bibl")
-  %output:media-type("application/json")
+  (: eXist 2.2 has a bug where declaring the media-type to be JSON also removes 
+    the default encoding of UTF-8. To get around that, I'm currently using the 
+    output method for plain text. :)
+  (:%output:media-type("application/json"):)
+  %output:method("text")
 function og:get-bibliography($datasetName) {
   let $dataset := $og:configFile//dataSet[@name eq $datasetName]
   return 
