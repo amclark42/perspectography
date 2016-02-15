@@ -1,0 +1,41 @@
+/*
+ * assets/css/reception.main.less
+ *
+ * Main LESS file for Cultures of Reception.
+ * Compiles to reception.main.css for production use.
+ */
+
+/* VARIABLES */
+
+/* Colors */
+
+//#5CB85C
+// Neutrals
+@black: rgb(0,0,0);
+@gray_darkest: rgb(45,45,44);
+@gray_darker: rgb(89,90,89);
+@gray_dark: rgb(134,135,133);
+@gray_mid: rgb(157,157,155);
+@gray_light: rgb(179,180,177);
+@gray_lighter: rgb(224,225,222);
+@gray_lightest: rgb(246,247,244);
+@white: rgb(255,255,255);
+
+/* Fonts */
+
+/* GENERAL STYLING RULES */
+
+svg{
+  
+  rect {
+    fill: @gray_darkest;
+  }
+  
+  &:hover,
+  &:focus {
+    
+    rect {
+      fill: @gray_darker;
+    }
+  } // svg:hover
+} // svg

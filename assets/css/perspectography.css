@@ -1,0 +1,16 @@
+/*
+ * assets/css/reception.main.less
+ *
+ * Main LESS file for Cultures of Reception.
+ * Compiles to reception.main.css for production use.
+ */
+/* VARIABLES */
+/* Colors */
+/* Fonts */
+/* GENERAL STYLING RULES */
+svg rect {
+  fill: #2d2d2c;
+}
+svg:hover rect, svg:focus rect {
+  fill: #595a59;
+}

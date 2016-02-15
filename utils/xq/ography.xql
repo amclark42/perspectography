@@ -24,6 +24,21 @@ declare variable $og:configFile := doc('../../config.xml');
 (:
  : RESTXQ FUNCTIONS
  :)
+ 
+declare 
+  %rest:GET
+  %rest:path("/perspectography")
+  %output:method("text")
+function og:list-datasets() {
+  let $list := 
+    <json type="array">
+      {
+        for $dataset in $og:configFile//dataSet
+        return og:get-dataset-info($dataset)
+      }
+    </json>
+  return xqjson:serialize-json($list)
+ };
 
   (: eXist 2.2 has a bug where declaring the media-type to be JSON also removes 
     the default encoding of UTF-8. To get around that, I'm currently using the 
@@ -116,6 +131,13 @@ declare function og:resolve-reference($ref, $currentDoc as node()) {
     let $idRef := substring-after($ref,"#")
     return $currentDoc/id($idRef)
   else $currentDoc/id($ref)
+};
+
+declare function og:get-dataset-info($entry) as node() {
+  <pair type="object">
+    <pair name="name" type="string">{ $entry/@name/data(.) }</pair>
+    <pair name="url" type="string">/restxq/perspectography/{ $entry/@name/data(.) }</pair>
+  </pair>
 };
 
 declare function og:get-bibliographic-data($entry as node()) as node() {
