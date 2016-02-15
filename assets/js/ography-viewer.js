@@ -17,8 +17,8 @@ og.config = {
 og.Dataset = Backbone.Model.extend({
   
   defaults: {
-    name: null,
-    url: null
+    name: '',
+    url: ''
   }
 });
 
@@ -49,16 +49,7 @@ og.Person = Backbone.Model.extend({
 
 og.Datasets = Backbone.Collection.extend({
   model: og.Dataset,
-  url: og.config.XQUERY_ROOT,
-  
-  update: function() {
-    var that = this;
-    
-    $.get(that.url,
-      function(response) {
-        that.reset(response);
-    });
-  }
+  url: og.config.XQUERY_ROOT
 }); // og.Datasets
 
 og.NamesList = Backbone.Collection.extend({
@@ -75,16 +66,15 @@ og.DatasetView = Backbone.View.extend({
   
   template: _.template(
     '<a href="#">'
-    + '<svg width="600" height="200">'
-    + '<rect width="600" height="200"></rect>'
-    + '<text x="50%" y="45%" alignment-baseline="middle" text-anchor="middle">'
-    + '<%= name %>'
+    + '<svg width="100%" height="100">'
+    + '<rect width="100%" height="100%"></rect>'
+    + '<text x="50%" y="45%" alignment-baseline="middle" text-anchor="middle"><%= name %>'
     + '</text>'
     + '</svg>'
-    + '</a>'
-  ),
+    + '</a>'),
   
   render: function() {
+    console.log(this.model.toJSON());
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
@@ -95,7 +85,9 @@ og.HomePage = Backbone.View.extend({
   className: 'home',
   
   initialize: function() {
+    this.collection.fetch({reset: true});
     this.listenTo(this.collection, 'reset', this.render);
+    this.render();
   },
   
   render: function() {
@@ -135,7 +127,6 @@ og.Router = Backbone.Router.extend({
 
   initialize: function() {
     this.home = new og.HomePage ({collection : new og.Datasets()});
-    this.home.collection.update();
   },
 
   setHTML: function(el) {
@@ -143,7 +134,6 @@ og.Router = Backbone.Router.extend({
   },
 
   main: function() {
-    this.home.render();
     this.setHTML(this.home.el);
     console.log(this.home.el);
   }

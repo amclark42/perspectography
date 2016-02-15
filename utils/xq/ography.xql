@@ -28,7 +28,7 @@ declare variable $og:configFile := doc('../../config.xml');
 declare 
   %rest:GET
   %rest:path("/perspectography")
-  %output:method("text")
+  %output:media-type("application/json")
 function og:list-datasets() {
   let $list := 
     <json type="array">

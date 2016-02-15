@@ -8,9 +8,28 @@
 /* Colors */
 /* Fonts */
 /* GENERAL STYLING RULES */
-svg rect {
-  fill: #2d2d2c;
+.home li {
+  list-style-type: none;
 }
-svg:hover rect, svg:focus rect {
-  fill: #595a59;
+.home li.contents-list-author {
+  font-size: 16pt;
+  font-variant: small-caps;
+  display: inline;
+  padding: 3px;
+}
+.home li.contents-list-author .contents-list-author-forename {
+  font-size: 14pt;
+  display: block;
+}
+.home li.contents-list-author a:focus rect {
+  fill: #5e104a;
+}
+.home li a, .home li a:visited {
+  fill: gold;
+}
+.home svg rect {
+  fill: #3f002f;
+}
+.home svg:hover rect, .home svg:focus rect {
+  fill: #5e104a;
 }

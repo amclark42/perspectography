@@ -9,7 +9,18 @@
 
 /* Colors */
 
-//#5CB85C
+// Purples
+@purple_darker: rgba(63,0,47,1);
+@purple_dark: rgba(94,16,74,1);
+@purple_mid: rgba(125,42,105,1);
+@purple_light: rgba(157,78,137,1);
+@purple_lighter: rgba(188,125,172,1);
+// Blues
+@blue_darker: rgba( 21, 96, 88,1);
+@blue_dark: rgba( 42,118,110,1);
+@blue_mid: rgba( 71,143,135,1);
+@blue_light: rgba(113,173,166,1);
+@blue_lighter: rgba(169,211,206,1);
 // Neutrals
 @black: rgb(0,0,0);
 @gray_darkest: rgb(45,45,44);
@@ -25,17 +36,47 @@
 
 /* GENERAL STYLING RULES */
 
-svg{
-  
-  rect {
-    fill: @gray_darkest;
+.home {
+  li {
+    list-style-type: none;
+    
+    &.contents-list-author {
+      font-size: 16pt;
+      font-variant: small-caps;
+      display: inline;
+      padding: 3px;
+      
+      .contents-list-author-forename {
+        font-size: 14pt;
+        display: block;
+      }
+      
+      a:focus {
+        
+        rect {
+          fill: @purple_dark;
+        }
+      } // a:focus
+    } // li.contents-list-author
+    
+    a,
+    a:visited {
+      fill: gold;
+    }
   }
-  
-  &:hover,
-  &:focus {
+      
+  svg{
     
     rect {
-      fill: @gray_darker;
+      fill: @purple_darker;
     }
-  } // svg:hover
-} // svg
+    
+    &:hover,
+    &:focus {
+      
+      rect {
+        fill: @purple_dark;
+      }
+    } // svg:hover
+  } // svg
+} // home
