@@ -65,8 +65,8 @@ og.DatasetView = Backbone.View.extend({
   tagName: 'li',
   
   template: _.template(
-    '<a href="#">'
-    + '<svg width="100%" height="100">'
+    '<a href="#<%= name %>">'
+    + '<svg width="100%" height="50">'
     + '<rect width="100%" height="100%"></rect>'
     + '<text x="50%" y="45%" alignment-baseline="middle" text-anchor="middle"><%= name %>'
     + '</text>'
@@ -74,7 +74,6 @@ og.DatasetView = Backbone.View.extend({
     + '</a>'),
   
   render: function() {
-    console.log(this.model.toJSON());
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
@@ -87,7 +86,6 @@ og.HomePage = Backbone.View.extend({
   initialize: function() {
     this.collection.fetch({reset: true});
     this.listenTo(this.collection, 'reset', this.render);
-    this.render();
   },
   
   render: function() {
@@ -121,21 +119,26 @@ og.PersonEditor = Backbone.View.extend({
 og.Router = Backbone.Router.extend({
 
   routes: {
-    ''                      : 'main',
+    ''                      : 'home',
+    ':dataset'              : 'dataset',
     'persons/new'           : 'new-person'
   },
 
   initialize: function() {
-    this.home = new og.HomePage ({collection : new og.Datasets()});
+    this.homePg = new og.HomePage ({collection : new og.Datasets()});
   },
 
   setHTML: function(el) {
     $('div#main').html(el);
   },
 
-  main: function() {
-    this.setHTML(this.home.el);
-    console.log(this.home.el);
+  home: function() {
+    this.setHTML(this.homePg.el);
+  },
+  
+  dataset: function(dataset) {
+    console.log("Triggered dataset view for " + dataset);
+    // TODO
   }
 }); //og.Router
 
