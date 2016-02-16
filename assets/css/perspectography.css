@@ -8,6 +8,11 @@
 /* Colors */
 /* Fonts */
 /* GENERAL STYLING RULES */
+body {
+  color: #2d2d2c;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 12pt;
+}
 .home li {
   list-style-type: none;
 }
