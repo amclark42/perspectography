@@ -9,13 +9,18 @@
         <title>Perspectography</title>
       </titleStmt>
       <publicationStmt>
-        <p>Publication Information</p>
+        <p>Copyleft Ashley M. Clark, 2016.</p>
       </publicationStmt>
       <sourceDesc>
         <p>Information about the source</p>
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="aclark.ash" when="2016-03-04">Replaced <gi>pcvdGender</gi> with a modified 
+        version of TEI's <gi>sex</gi>, renamed to <gi>gender</gi> and given a default 
+        <att>evidence</att> value of "conjecture." Greatly expanded the list of suggested values 
+        for <att>value</att> on <gi>gender</gi>, and added descriptions. Allowed several elements 
+        previously excluded from the schema.</change>
       <change who="aclark.ash" when="2016-01">Added W3C date attributes to <gi>catRef</gi>.</change>
       <change who="aclark.ash" when="2015-11">Created first draft.</change>
     </revisionDesc>
@@ -24,42 +29,99 @@
     <body>
       <schemaSpec ident="perspectography" source="tei:2.8.0" start="TEI">
         <desc>A schema for the use of making various ographies.</desc>
-
-        <!-- 
-             The <moduleRef> elements specify which TEI modules will
-             be included in the schema. The value of the @key
-             attribute is the name of the module. The first four listed here 
-             are required: core, tei, header, textstructure. 
         
-             To trim the contents of these modules, use @include OR @except:
-               - @include lists the elements from the module that will be included in the schema
-               - @except lists the elements from the module that will be excluded from the schema        
-        -->
-        <moduleRef key="core"
-          exclude="binaryObject cb distinct divGen gb graphic measure measureGrp media stage"/>
+        <moduleRef key="core" exclude="binaryObject cb distinct divGen gb stage"/>
         <moduleRef key="tei"/>
-        <moduleRef key="header"
-          exclude="biblFull cRefPattern calendar calendarDesc geoDecl stdVals scriptNote"/>
-        <moduleRef key="textstructure"
-          exclude="div1 div2 div3 div4 div5 div6 div7 imprimatur salute signed"/>
-        <moduleRef key="namesdates"
-          exclude="bloc climate population sex socecStatus terrain"/>
-        <moduleRef key="linking" exclude="join joinGrp"/>
+        <moduleRef key="header" exclude="cRefPattern stdVals scriptNote"/>
+        <moduleRef key="textstructure" exclude="div1 div2 div3 div4 div5 
+          div6 div7 imprimatur salute signed"/>
+        <moduleRef key="namesdates"/>
+        <moduleRef key="linking"/>
         
-        <elementSpec module="namesdates" ident="pcvdGender" mode="add">
-          <classes>
-            <memberOf key="model.persStateLike" mode="add"/>
-          </classes>
+        <elementSpec module="namesdates" ident="sex" mode="change">
+          <altIdent>gender</altIdent>
           <attList>
-            <attDef ident="value" mode="add">
-              <desc>[fill in]</desc>
+            <attDef ident="evidence" mode="replace" usage="rec">
+              <desc>indicates support for the gender identity listed in <att>value</att>. The default value is "conjecture."</desc>
+              <datatype>
+                <macroRef key="data.enumerated"/>
+              </datatype>
+              <defaultVal>conjecture</defaultVal>
+              <valList type="semi">
+                <valItem ident="conjecture">
+                  <desc>The gender identity listed in <att>value</att> was likely selected due to assumptions by someone besides the person in question. As a result, <att>value</att> may be erroneous and presumptive.</desc>
+                </valItem>
+                <valItem ident="self-identification">
+                  <desc>The gender identity listed in <att>value</att> has been explicitly stated or confirmed by the person to whom this classification applies.</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            
+            <attDef ident="value" mode="replace" usage="req">
+              <desc>classifies gender identity.</desc>
               <datatype>
                 <macroRef key="data.enumerated"/>
               </datatype>
               <valList type="semi">
-                <valItem ident="genderqueer"></valItem>
-                <valItem ident="female"></valItem>
-                <valItem ident="male"></valItem>
+                <valItem ident="agender">
+                  <desc>Person identifies as without gender.</desc>
+                </valItem>
+                <valItem ident="androgynous">
+                  <desc>Person identifies or presents as neither masculine nor feminine, but as neutral or mixed gender.</desc>
+                </valItem>
+                <valItem ident="bigender">
+                  <desc>Person identifies as a mix of masculine and feminine genders. This term differs from "pangender" in that it places gender in a masculine/feminine binary, rather than along a diverse spectrum.</desc>
+                </valItem>
+                <valItem ident="female">
+                  <desc>Person identifies as female.</desc>
+                </valItem>
+                <valItem ident="genderfluid">
+                  <desc>Person's gender identification is fluid, shifting on the gender spectrum over time.</desc>
+                </valItem>
+                <valItem ident="gender-nonconforming">
+                  <desc>Person does not conform to societal divisions of gender. Related to "genderqueer," "gender-questioning," and "non-binary."</desc>
+                </valItem>
+                <valItem ident="genderqueer">
+                  <desc>Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "gender-questioning," and "non-binary."</desc>
+                </valItem>
+                <valItem ident="gender-questioning">
+                  <desc>Person is exploring or does not know how they prefer to present and/or identify within the gender spectrum.</desc>
+                </valItem>
+                <valItem ident="male">
+                  <desc>Person identifies as male.</desc>
+                </valItem>
+                <valItem ident="other">
+                  <desc>Person prefers not to identify their gender.</desc>
+                </valItem>
+                <valItem ident="non-binary">
+                  <desc>Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "genderqueer," and "gender-questioning."</desc>
+                </valItem>
+                <valItem ident="pangender">
+                  <desc>Person identifies with many genders. This term differs from "bigender" in that it places gender along a diverse spectrum, rather than in a masculine/feminine binary.</desc>
+                </valItem>
+                <valItem ident="trans*">
+                  <desc>An inclusive, umbrella term for persons whose identity or presentation challenges societal gender norms. Includes "transgender," "gender-nonconforming," "genderqueer," "non-binary," etc.</desc>
+                </valItem>
+                <valItem ident="transgender">
+                  <desc>Person whose gender identity does not match their assigned sex.</desc>
+                </valItem>
+                <valItem ident="trans female">
+                  <desc>Transgender person identifies as female.</desc>
+                </valItem>
+                <valItem ident="transfeminine">
+                  <desc>Transgender person identifies as feminine within the gender spectrum.</desc>
+                </valItem>
+                <valItem ident="trans male">
+                  <desc>Transgender person who identifies as male.</desc>
+                </valItem>
+                <valItem ident="transmasculine">
+                  <desc>Transgender person identifies as masculine within the gender spectrum.</desc>
+                </valItem>
+                <valItem ident="trans person">
+                  <desc>Transgender person.</desc>
+                </valItem>
+                <!--<valItem ident="two-spirit">
+                </valItem>-->
               </valList>
             </attDef>
           </attList>
