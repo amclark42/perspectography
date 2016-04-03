@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" 
+  type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" 
+  type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -12,10 +13,13 @@
         <p>Copyleft Ashley M. Clark, 2016.</p>
       </publicationStmt>
       <sourceDesc>
-        <p>Information about the source</p>
+        <p>This ODD was built off of a template from the "TEI Customization" workshop of the 
+          Women Writers Project. See <ptr target="http://wwp.neu.edu/outreach/resources/customization.html"/>.</p>
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="aclark.ash" when="2016-04-03">Changed the datatype of <att>value</att> on 
+        <gi>gender</gi> to 'text', so that spaces are allowed as input.</change>
       <change who="aclark.ash" when="2016-03-04">Replaced <gi>pcvdGender</gi> with a modified 
         version of TEI's <gi>sex</gi>, renamed to <gi>gender</gi> and given a default 
         <att>evidence</att> value of "conjecture." Greatly expanded the list of suggested values 
@@ -28,7 +32,7 @@
   <text>
     <body>
       <schemaSpec ident="perspectography" source="tei:2.8.0" start="TEI">
-        <desc>A schema for the use of making various ographies.</desc>
+        <desc>A schema for the use of making various 'ographies.</desc>
         
         <moduleRef key="core" exclude="binaryObject cb distinct divGen gb stage"/>
         <moduleRef key="tei"/>
@@ -60,7 +64,7 @@
             <attDef ident="value" mode="replace" usage="req">
               <desc>classifies gender identity.</desc>
               <datatype>
-                <macroRef key="data.enumerated"/>
+                <macroRef key="data.text"/>
               </datatype>
               <valList type="semi">
                 <valItem ident="agender">

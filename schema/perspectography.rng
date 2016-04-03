@@ -3,7 +3,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2016-03-04T13:46:20Z. .
+Schema generated from ODD source 2016-04-03T16:05:48Z. .
 TEI Edition: Version 2.8.0. Last updated on
 	6th April 2015, revision 13197
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 2.8.0/
@@ -8357,7 +8357,7 @@ Suggested values include: 1] agender; 2] androgynous; 3] bigender; 4] female; 5]
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Transgender person identifies as masculine within the gender spectrum.</a:documentation>
                <value>trans person</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Transgender person.</a:documentation>
-               <ref name="data.enumerated"/>
+               <ref name="data.text"/>
             </choice>
          </attribute>
          <empty/>
