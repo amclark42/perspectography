@@ -46,7 +46,7 @@ function og:list-datasets() {
   (:%output:media-type("application/json"):)
 declare 
   %rest:GET
-  %rest:path("/perspectography/{$datasetName}/bibl")
+  %rest:path("/perspectography/{$datasetName}/bibls")
   %rest:query-param("offset","{$offset}","1")
   %rest:query-param("max","{$max}","50")
   %output:method("text")

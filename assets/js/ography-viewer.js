@@ -62,7 +62,7 @@ og.NamesList = Backbone.Collection.extend({
 
 og.DatasetView = Backbone.View.extend({
   
-  tagName: 'li',
+  tagName: 'div',
   
   template: _.template(
     '<a href="#<%= name %>">'
@@ -75,6 +75,7 @@ og.DatasetView = Backbone.View.extend({
   
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    this.$el.prepend('<h2>Datasets</h2>')
     return this;
   }
 }); // og.DatasetView

@@ -13,23 +13,20 @@ body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 12pt;
 }
-.home li {
-  list-style-type: none;
-}
-.home li.contents-list-author {
+.home div.contents-list-author {
   font-size: 16pt;
   font-variant: small-caps;
   display: inline;
   padding: 3px;
 }
-.home li.contents-list-author .contents-list-author-forename {
+.home div.contents-list-author .contents-list-author-forename {
   font-size: 14pt;
   display: block;
 }
-.home li.contents-list-author a:focus rect {
+.home div.contents-list-author a:focus rect {
   fill: #5e104a;
 }
-.home li a, .home li a:visited {
+.home div a, .home div a:visited {
   fill: gold;
 }
 .home svg rect {
