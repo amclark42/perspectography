@@ -19,7 +19,9 @@ og.Dataset = Backbone.Model.extend({
   defaults: {
     name: '',
     url: ''
-  }
+  },
+  
+  idAttribute: 'name'
 });
 
 og.PersNamePart = Backbone.Model.extend({
@@ -60,7 +62,29 @@ og.NamesList = Backbone.Collection.extend({
  * VIEWS
  */
 
-og.DatasetView = Backbone.View.extend({
+og.HomePage = Backbone.View.extend({
+  
+  className: 'home',
+  
+  initialize: function() {
+    this.collection.fetch({reset: true});
+    this.listenTo(this.collection, 'reset', this.render);
+  },
+  
+  render: function() {
+    var panel = this.$el.empty();
+    panel.prepend('<h2>Datasets</h2>');
+    
+		this.collection.each(function(model) {
+			var item = new og.DatasetLink({model: model});
+			panel.append(item.render().el);
+		}, this);
+		
+		return this;
+  }
+});
+
+og.DatasetLink = Backbone.View.extend({
   
   tagName: 'div',
   
@@ -75,31 +99,24 @@ og.DatasetView = Backbone.View.extend({
   
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
-    this.$el.prepend('<h2>Datasets</h2>')
     return this;
   }
-}); // og.DatasetView
+}); // og.DatasetLink
 
-og.HomePage = Backbone.View.extend({
+og.DatasetHome = Backbone.View.extend({
   
-  className: 'home',
+  tagName: 'div',
   
   initialize: function() {
-    this.collection.fetch({reset: true});
-    this.listenTo(this.collection, 'reset', this.render);
+    this.render();
   },
   
   render: function() {
-    var panel = this.$el.empty();
-    
-		this.collection.each(function(model) {
-			var item = new og.DatasetView({model: model});
-			panel.append(item.render().el);
-		}, this);
-		
-		return this;
+    this.$el.html('<a href="#">Bibls</a>'
+      + '<a href="#">Persons</a>');
+    return this;
   }
-});
+}); // og.DatasetHome
 
 og.PersonEditor = Backbone.View.extend({
   
@@ -139,7 +156,8 @@ og.Router = Backbone.Router.extend({
   
   dataset: function(dataset) {
     console.log("Triggered dataset view for " + dataset);
-    // TODO
+    this.dataset = new og.DatasetHome({model: this.homePg.collection.get(dataset)});
+    this.setHTML(this.dataset.el);
   }
 }); //og.Router
 
