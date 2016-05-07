@@ -49,6 +49,7 @@ declare
   %rest:path("/perspectography/{$datasetName}/bibl")
   %rest:query-param("offset","{$offset}","1")
   %rest:query-param("max","{$max}","50")
+  %output:media-type("application/json")
   %output:method("text")
 function og:get-bibliography($datasetName, $offset, $max) {
   let $dataset := $og:configFile//dataSet[@name eq $datasetName]
@@ -77,6 +78,7 @@ declare
   %rest:path("/perspectography/{$datasetName}/persons")
   %rest:query-param("offset","{$offset}","1")
   %rest:query-param("max","{$max}","50")
+  %output:media-type("application/json")
   %output:method("text")
 function og:get-personography($datasetName, $offset, $max) {
   let $resultSet := og:retrieve-result-set($datasetName,'persons',$offset,$max)
