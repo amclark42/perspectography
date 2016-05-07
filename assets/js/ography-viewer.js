@@ -107,13 +107,24 @@ og.DatasetHome = Backbone.View.extend({
   
   tagName: 'div',
   
+  template: _.template(
+    '<nav class="navbar navbar-default>'
+    + '<div class="container-fluid>'
+    + '<a href="#<%= name %>" class="navbar-brand"><%= name %></a>'
+    + '</div>'
+    + '<ul class="nav navbar-nav">'
+    + '<li><a href="#<%= name %>/bibls">Bibls</a></li>'
+    + '<li><a href="#<%= name %>/persons">Persons</a></li>'
+    + '</ul>'
+    + '</nav>'
+  ),
+  
   initialize: function() {
     this.render();
   },
   
   render: function() {
-    this.$el.html('<a href="#">Bibls</a>'
-      + '<a href="#">Persons</a>');
+    this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
 }); // og.DatasetHome
