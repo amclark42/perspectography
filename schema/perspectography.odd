@@ -18,15 +18,16 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="aclark.ash" when="2016-04-03">Changed the datatype of <att>value</att> on 
+      <change who="amclark42" when="2016-05-15">Added "tagdocs" module.</change>
+      <change who="amclark42" when="2016-04-03">Changed the datatype of <att>value</att> on 
         <gi>gender</gi> to 'text', so that spaces are allowed as input.</change>
-      <change who="aclark.ash" when="2016-03-04">Replaced <gi>pcvdGender</gi> with a modified 
+      <change who="amclark42" when="2016-03-04">Replaced <gi>pcvdGender</gi> with a modified 
         version of TEI's <gi>sex</gi>, renamed to <gi>gender</gi> and given a default 
         <att>evidence</att> value of "conjecture." Greatly expanded the list of suggested values 
         for <att>value</att> on <gi>gender</gi>, and added descriptions. Allowed several elements 
         previously excluded from the schema.</change>
-      <change who="aclark.ash" when="2016-01">Added W3C date attributes to <gi>catRef</gi>.</change>
-      <change who="aclark.ash" when="2015-11">Created first draft.</change>
+      <change who="amclark42" when="2016-01">Added W3C date attributes to <gi>catRef</gi>.</change>
+      <change who="amclark42" when="2015-11">Created first draft.</change>
     </revisionDesc>
   </teiHeader>
   <text>
@@ -41,6 +42,7 @@
           div6 div7 imprimatur salute signed"/>
         <moduleRef key="namesdates"/>
         <moduleRef key="linking"/>
+        <moduleRef key="tagdocs"/>
         
         <elementSpec module="namesdates" ident="sex" mode="change">
           <altIdent>gender</altIdent>
@@ -48,7 +50,7 @@
             <attDef ident="evidence" mode="replace" usage="rec">
               <desc>indicates support for the gender identity listed in <att>value</att>. The default value is "conjecture."</desc>
               <datatype>
-                <macroRef key="data.enumerated"/>
+                <dataRef key="data.enumerated"/>
               </datatype>
               <defaultVal>conjecture</defaultVal>
               <valList type="semi">
@@ -64,7 +66,7 @@
             <attDef ident="value" mode="replace" usage="req">
               <desc>classifies gender identity.</desc>
               <datatype>
-                <macroRef key="data.text"/>
+                <dataRef key="data.text"/>
               </datatype>
               <valList type="semi">
                 <valItem ident="agender">
@@ -142,7 +144,7 @@
             <attDef ident="relation" mode="add">
               <desc>[fill in]</desc>
               <datatype>
-                <macroRef key="data.enumerated"/>
+                <dataRef key="data.enumerated"/>
               </datatype>
               <valList type="semi">
                 <valItem ident="abridger">
