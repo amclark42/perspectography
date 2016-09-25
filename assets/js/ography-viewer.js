@@ -3,7 +3,7 @@
 // Perspectography
 
 (function() {
-	window.og = {}; // the WWP Cultures of Reception namespace
+	window.og = {}; // the Perspectography namespace
 })();
 
 og.config = {
@@ -15,11 +15,19 @@ og.config = {
  * BACKBONE PROTOTYPE ADDITIONS
  */
 
+/* If the view must include one or more subviews, this function will render 
+  a given subview, making its DOM element ("el") an element within the 
+  current view's DOM. */
+Backbone.View.prototype.assign = function(view, selector) {
+  view.setElement(this.$(selector)).render();
+};
+
+
+/* If the view has defined a function 'onClose', use that. Otherwise, remove
+  the view. This allows views to close their children if they want. Solution
+  taken from "Backbone Fundamentals":
+  https://addyosmani.com/backbone-fundamentals/#disposing-view-hierarchies */
 Backbone.View.prototype.close = function() {
-  /* If the view has defined a function 'onClose', use that. Otherwise, remove
-    the view. This allows views to close their children if they want. Solution
-    taken from "Backbone Fundamentals":
-    https://addyosmani.com/backbone-fundamentals/#disposing-view-hierarchies */
   if ( this.onClose ) {
     this.onClose();
   }
@@ -54,6 +62,7 @@ og.Bibl = Backbone.Model.extend({
   
 }); // og.Person
 
+
 og.Person = Backbone.Model.extend({
   idAttribute: "id",
   
@@ -77,6 +86,7 @@ og.Datasets = Backbone.Collection.extend({
   url: og.config.XQUERY_ROOT
 }); // og.Datasets
 
+
 og.Bibls = Backbone.Collection.extend({
   model: og.Bibl,
   
@@ -89,6 +99,7 @@ og.Bibls = Backbone.Collection.extend({
   }
 }); // og.Bibls
 
+
 og.Persons = Backbone.Collection.extend({
   model: og.Person,
   
@@ -98,6 +109,8 @@ og.Persons = Backbone.Collection.extend({
   
   initialize: function(opts) {
     this.dataset = opts.dataset;
+    var test = this.fetch({merge: false, remove: false, reset: true});
+    console.log(test);
   }
 }); // og.Persons
 
@@ -132,6 +145,7 @@ og.HomePage = Backbone.View.extend({
   }
 });
 
+
 og.DatasetLink = Backbone.View.extend({
   
   tagName: 'div',
@@ -151,9 +165,60 @@ og.DatasetLink = Backbone.View.extend({
   }
 }); // og.DatasetLink
 
-og.DatasetHome = Backbone.View.extend({
+
+og.DatasetCentral = Backbone.View.extend({
   
   tagName: 'div',
+  
+  template: _.template(
+    '<div class="dataset-nav"></div>'
+  + '<div class="dataset-viewer"></div>'
+  ),
+  
+  initialize: function(opts) {
+    this.nav = new og.DatasetNav({model : opts.model});
+    this.viewer;
+    if ( opts.viewer !== undefined ) {
+      this.viewer = opts.viewer;
+    }
+    this.render();
+  },
+  
+  onClose: function() {
+    this.nav.close();
+    if ( this.viewer !== undefined )
+      this.viewer.close();
+  },
+  
+  render: function() {
+    this.$el.html(this.template());
+    this.assign(this.nav, 'div.dataset-nav');
+    if ( this.viewer !== undefined )
+      this.assign(this.viewer, 'div.dataset-viewer');
+    return this;
+  },
+  
+  resetViewer: function() {
+    if ( this.viewer !== undefined ) {
+      this.viewer.close();
+      this.viewer = undefined;
+      this.render();
+    }
+    return this;
+  },
+  
+  setViewer: function(newViewer) {
+    this.viewer = newViewer;
+    this.render();
+    return this;
+  }
+}); //og.DatasetCentral
+
+
+og.DatasetNav = Backbone.View.extend({
+  
+  tagName: 'div',
+  className: 'dataset-nav',
   
   template: _.template(
     '<nav class="navbar navbar-default>'
@@ -167,6 +232,7 @@ og.DatasetHome = Backbone.View.extend({
   + '</nav>'),
   
   initialize: function() {
+    this.on('reset',this.render);
     this.render();
   },
   
@@ -174,7 +240,25 @@ og.DatasetHome = Backbone.View.extend({
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
-}); // og.DatasetHome
+}); // og.DatasetNav
+
+
+og.PersonsViewer = Backbone.View.extend({
+  
+  tagName: 'div',
+  className: 'dataset-viewer',
+  
+  initialize: function() {
+    this.listenTo(this.collection, 'reset', this.render);
+  },
+  
+  render: function() {
+    this.$el.html(this.collection.length);
+    console.log(this.collection.at(0));
+    return this;
+  }
+}); // og.PersonsViewer
+
 
 og.PersonEditor = Backbone.View.extend({
   
@@ -188,11 +272,12 @@ og.PersonEditor = Backbone.View.extend({
   }
 });
 
+
 og.FourOhFour = Backbone.View.extend({
   
   template: _.template(
     '<div class="jumbotron">'
-    + '<h1>Sorry! This page doesn\'t exist yet.</h1>'
+    + '<h1>Sorry! This page doesn\'t exist.</h1>'
   + '</div>'),
   
   initialize: function() {
@@ -254,27 +339,32 @@ og.Router = Backbone.Router.extend({
       });
     } else {
       this.getDataset(dataset);
-      this.showView(this.datasetView);
+      this.showView(this.datasetView.resetViewer());
     }
   },
   
   datasetBibls: function(dataset) {
     if ( this.datasets.length === 0 ) {
       this.listenToOnce(this.datasets,'reset', function() {
-        this.dataset(dataset);
+        this.datasetBibls(dataset);
       });
     } else {
       this.getDataset(dataset);
+      var bibls = new og.FourOhFour();
+      this.showView(this.datasetView.setViewer(bibls));
     }
   },
   
   datasetPersons: function(dataset) {
     if ( this.datasets.length === 0 ) {
       this.listenToOnce(this.datasets,'reset', function() {
-        this.dataset(dataset);
+        this.datasetPersons(dataset);
       });
     } else {
       this.getDataset(dataset);
+      var persons = new og.Persons({dataset: this.datasetView.model});
+      var persViewer = new og.PersonsViewer({collection: persons});
+      this.showView(this.datasetView.setViewer(persViewer));
     }
   },
   
@@ -282,7 +372,7 @@ og.Router = Backbone.Router.extend({
     if ( this.datasetView === undefined || dataset !== this.datasetView.model.get('name') ) {
       console.log("Triggered dataset view for " + dataset);
       var datasetModel = this.homePg.collection.get(dataset);
-      this.datasetView = new og.DatasetHome({model: datasetModel});
+      this.datasetView = new og.DatasetCentral({model: datasetModel});
     }
     return this.datasetView;
   },
