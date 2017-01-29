@@ -96,6 +96,14 @@ og.Bibls = Backbone.Collection.extend({
   
   initialize: function(opts) {
     this.dataset = opts.dataset;
+    this.total_results;
+  },
+  
+  parse: function(response) {
+    this.total_results = response.total_results;
+    var results = response.results;
+    console.log("Loaded "+results.length+" of "+this.total_results+" bibls");
+    return results;
   }
 }); // og.Bibls
 
@@ -109,8 +117,16 @@ og.Persons = Backbone.Collection.extend({
   
   initialize: function(opts) {
     this.dataset = opts.dataset;
+    this.total_results;
     var test = this.fetch({merge: false, remove: false, reset: true});
-    console.log(test);
+    //console.log(test);
+  },
+  
+  parse: function(response) {
+    this.total_results = response.total_results;
+    var results = response.results;
+    console.log("Loaded "+results.length+" of "+this.total_results+" persons");
+    return results;
   }
 }); // og.Persons
 
@@ -143,7 +159,7 @@ og.HomePage = Backbone.View.extend({
 		
 		return this;
   }
-});
+}); // og.HomePage
 
 
 og.DatasetLink = Backbone.View.extend({
@@ -157,7 +173,7 @@ og.DatasetLink = Backbone.View.extend({
     + '<text x="50%" y="45%" alignment-baseline="middle" text-anchor="middle"><%= name %>'
     + '</text>'
     + '</svg>'
-    + '</a>'),
+  + '</a>'),
   
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
@@ -253,7 +269,7 @@ og.PersonsViewer = Backbone.View.extend({
   },
   
   render: function() {
-    this.$el.html(this.collection.length);
+    this.$el.html(this.collection.total_results);
     console.log(this.collection.at(0));
     return this;
   }
@@ -270,7 +286,7 @@ og.PersonEditor = Backbone.View.extend({
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
-});
+}); // og.PersonEditor
 
 
 og.FourOhFour = Backbone.View.extend({
@@ -288,7 +304,7 @@ og.FourOhFour = Backbone.View.extend({
     this.$el.html(this.template());
     return this;
   }
-});
+}); // og.FourOhFour
 
 
 /*
@@ -369,7 +385,8 @@ og.Router = Backbone.Router.extend({
   },
   
   getDataset: function(dataset) {
-    if ( this.datasetView === undefined || dataset !== this.datasetView.model.get('name') ) {
+    if ( this.datasetView === undefined 
+        || dataset !== this.datasetView.model.get('name') ) {
       console.log("Triggered dataset view for " + dataset);
       var datasetModel = this.homePg.collection.get(dataset);
       this.datasetView = new og.DatasetCentral({model: datasetModel});

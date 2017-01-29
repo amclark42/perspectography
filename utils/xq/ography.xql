@@ -51,18 +51,21 @@ declare
   %rest:query-param("max","{$max}","50")
   %output:method("text")
 function og:get-bibliography($datasetName, $offset, $max) {
-  let $dataset := $og:configFile//dataSet[@name eq $datasetName]
+  let $results := og:get-all-results($datasetName,'bibls')
   return 
-    if ( $dataset ) then
-      let $pathToFiles := data($dataset//directoryPath/@target)
-      let $allFiles := collection(concat($pathToFiles,'/?select=*.xml'))
-      let $allBiblStructs := $allFiles//tei:listBibl/tei:biblStruct
+    if ( not($results castable as xs:boolean) ) then
+      let $subset := og:get-results-subset($results,$offset,$max)
       let $compiledData := 
-        <json type="array">
-          {
-            for $entry in subsequence($allBiblStructs,$offset,$max)
-            return og:get-bibliographic-data($entry)
-          }
+        <json type="object">
+          <pair name="total_results" type="number">
+            { count($results) }
+          </pair>
+          <pair name="results" type="array">
+            {
+              for $entry in $subset
+              return og:get-bibliographic-data($entry)
+            }
+          </pair>
         </json>
       return xqjson:serialize-json($compiledData)
     else 
@@ -79,15 +82,21 @@ declare
   %rest:query-param("max","{$max}","50")
   %output:method("text")
 function og:get-personography($datasetName, $offset, $max) {
-  let $resultSet := og:retrieve-result-set($datasetName,'persons',$offset,$max)
+  let $results := og:get-all-results($datasetName,'persons')
   return 
-    if ( not($resultSet castable as xs:boolean) ) then
+    if ( not($results castable as xs:boolean) ) then
+      let $subset := og:get-results-subset($results,$offset,$max)
       let $compiledData := 
-        <json type="array">
-          {
-            for $entry in $resultSet
-            return og:get-person-data($entry)
-          }
+        <json type="object">
+          <pair name="total_results" type="number">
+            { count($results) }
+          </pair>
+          <pair name="results" type="array">
+            {
+              for $entry in $subset
+              return og:get-person-data($entry)
+            }
+          </pair>
         </json>
       return xqjson:serialize-json($compiledData)
     else 
@@ -106,6 +115,26 @@ function og:make-person($nameParts) {
 (:
  : SUPPORT FUNCTIONS
  :)
+
+declare function og:get-all-results($datasetName as xs:string, $resultsType as xs:string) {
+  let $dataset := $og:configFile//dataSet[@name eq $datasetName]
+  return 
+    if ( $dataset ) then
+      let $pathToFiles := data($dataset//directoryPath/@target)
+      let $allFiles := collection(concat($pathToFiles,'/?select=*.xml'))
+      let $allEntries := switch ( $resultsType ) 
+                            case "bibls" return $allFiles//tei:listBibl/tei:biblStruct
+                            case "persons" return $allFiles//tei:listPerson/tei:person
+                            default return false()
+      return $allEntries
+    else false()
+};
+
+declare function og:get-results-subset($superset as item()*, $offset as xs:integer, $max as xs:integer) {
+  if ( $superset ) then
+    subsequence($superset,$offset,$max)
+  else false()
+};
 
 declare function og:retrieve-result-set($datasetName as xs:string, $resultsType as xs:string, $offset as xs:integer, $max as xs:integer) {
   let $dataset := $og:configFile//dataSet[@name eq $datasetName]
