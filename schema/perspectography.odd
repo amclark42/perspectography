@@ -32,7 +32,7 @@
   </teiHeader>
   <text>
     <body>
-      <schemaSpec ident="perspectography" source="tei:2.8.0" start="TEI">
+      <schemaSpec ident="perspectography" source="tei:3.2.0" start="TEI">
         <desc>A schema for the use of making various 'ographies.</desc>
         
         <moduleRef key="core" exclude="binaryObject cb distinct divGen gb stage"/>
@@ -135,7 +135,7 @@
         
         <elementSpec module="header" ident="catRef" mode="change">
           <classes mode="change">
-            <memberOf key="att.datable.w3c" mode="add"/>
+            <memberOf key="att.datable" mode="add"/>
           </classes>
         </elementSpec>
 
