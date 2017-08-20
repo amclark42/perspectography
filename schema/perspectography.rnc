@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2017-08-13T14:09:22Z. .
+# Schema generated from ODD source 2017-08-20T17:21:36Z. .
 # TEI Edition: Version 3.2.0. Last updated on
 #	10th July 2017, revision 0fcf651
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
@@ -49,7 +49,7 @@ anyElement-content =
     (text | anyElement-content)*
   }
   >> sch:pattern [
-       id = "d9e69474-constraint"
+       id = "d9e69471-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -75,7 +75,7 @@ anyElement-constraint =
     (text | anyElement-constraint)*
   }
   >> sch:pattern [
-       id = "d9e69801-constraint"
+       id = "d9e69798-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -101,7 +101,7 @@ anyElement-datatype =
     (text | anyElement-datatype)*
   }
   >> sch:pattern [
-       id = "d9e70690-constraint"
+       id = "d9e70686-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -2902,7 +2902,7 @@ resp =
       | 
         ## FIX ME
         "writer of preface"
-      | xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+      | xsd:string
     }?,
     empty
   }
