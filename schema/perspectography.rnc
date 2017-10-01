@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2017-08-20T17:21:36Z. .
+# Schema generated from ODD source 2017-10-01T12:51:09Z. .
 # TEI Edition: Version 3.2.0. Last updated on
 #	10th July 2017, revision 0fcf651
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
@@ -49,7 +49,7 @@ anyElement-content =
     (text | anyElement-content)*
   }
   >> sch:pattern [
-       id = "d9e69471-constraint"
+       id = "d9e69348-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -75,7 +75,7 @@ anyElement-constraint =
     (text | anyElement-constraint)*
   }
   >> sch:pattern [
-       id = "d9e69798-constraint"
+       id = "d9e69675-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -101,7 +101,7 @@ anyElement-datatype =
     (text | anyElement-datatype)*
   }
   >> sch:pattern [
-       id = "d9e70686-constraint"
+       id = "d9e70563-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -2814,96 +2814,29 @@ resp =
   ## (responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement]
   element resp {
     macro.phraseSeq.limited,
-    att.global.attributes,
+    att.global.attribute.xmlid,
+    att.global.attribute.xmllang,
+    att.global.attribute.xmlbase,
+    att.global.attribute.xmlspace,
+    att.global.rendition.attribute.rend,
+    att.global.rendition.attribute.style,
+    att.global.rendition.attribute.rendition,
+    att.global.linking.attribute.corresp,
+    att.global.linking.attribute.synch,
+    att.global.linking.attribute.sameAs,
+    att.global.linking.attribute.copyOf,
+    att.global.linking.attribute.next,
+    att.global.linking.attribute.prev,
+    att.global.linking.attribute.exclude,
+    att.global.linking.attribute.select,
+    att.global.responsibility.attribute.cert,
+    att.global.responsibility.attribute.resp,
+    att.global.source.attribute.source,
     att.canonical.attributes,
     att.datable.attributes,
     
-    ## [fill in]
-    ## Suggested values include: 1] abridger; 2] adapter; 3] artist; 4] author; 5] author of afterword, colophon, etc.; 6] author of introduction, etc.; 7] autographer; 8] colorist; 9] compiler; 10] contributor; 11] copyright holder; 12] cover designer; 13] creator; 14] depicted; 15] editor; 16] editor of compilation; 17] illustrator; 18] inker; 19] lender; 20] letterer; 21] other; 22] photographer; 23] publisher; 24] translator; 25] voice actor; 26] writer of introduction; 27] writer of preface
-    attribute relation {
-      
-      ## FIX ME
-      "abridger"
-      | 
-        ## FIX ME
-        "adapter"
-      | 
-        ## FIX ME
-        "artist"
-      | 
-        ## FIX ME
-        "author"
-      | 
-        ## FIX ME
-        "author of afterword, colophon, etc."
-      | 
-        ## FIX ME
-        "author of introduction, etc."
-      | 
-        ## FIX ME
-        "autographer"
-      | 
-        ## FIX ME
-        "colorist"
-      | 
-        ## FIX ME
-        "compiler"
-      | 
-        ## FIX ME
-        "contributor"
-      | 
-        ## FIX ME
-        "copyright holder"
-      | 
-        ## FIX ME
-        "cover designer"
-      | 
-        ## FIX ME
-        "creator"
-      | 
-        ## FIX ME
-        "depicted"
-      | 
-        ## FIX ME
-        "editor"
-      | 
-        ## FIX ME
-        "editor of compilation"
-      | 
-        ## FIX ME
-        "illustrator"
-      | 
-        ## FIX ME
-        "inker"
-      | 
-        ## FIX ME
-        "lender"
-      | 
-        ## FIX ME
-        "letterer"
-      | 
-        ## FIX ME
-        "other"
-      | 
-        ## FIX ME
-        "photographer"
-      | 
-        ## FIX ME
-        "publisher"
-      | 
-        ## FIX ME
-        "translator"
-      | 
-        ## FIX ME
-        "voice actor"
-      | 
-        ## FIX ME
-        "writer of introduction"
-      | 
-        ## FIX ME
-        "writer of preface"
-      | xsd:string
-    }?,
+    ## (number) gives a number (or other label) for an element, which is not necessarily unique within the document.
+    attribute n { xsd:string }?,
     empty
   }
 title =

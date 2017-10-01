@@ -18,6 +18,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="amclark42" when="2017-10-01">Changed added attribute <att>relation</att> to a 
+        modification of <att>n</att>.</change>
       <change who="amclark42" when="2017-08-20">Changed <att>relation</att> and <gi>gender</gi>'s 
         <att>value</att> to use the string datatype. Removed many excluded elements.</change>
       <change who="amclark42" when="2017-08-13">Updated to TEI version 3.2.0, which adds 
@@ -145,8 +147,8 @@
 
         <elementSpec module="core" ident="resp" mode="change">
           <attList>
-            <attDef ident="relation" mode="add">
-              <desc>[fill in]</desc>
+            <attDef ident="n" mode="change">
+              <!--<desc>[fill in]</desc>-->
               <datatype>
                 <dataRef name="string"/>
               </datatype>
