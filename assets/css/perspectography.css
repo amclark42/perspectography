@@ -13,25 +13,33 @@ body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 12pt;
 }
-.home div.contents-list-author {
+.page-header {
+  margin: 10px 0;
+}
+.page-header h1 {
+  margin-top: 10px;
+}
+#sets-nav div.contents-list-author {
   font-size: 16pt;
   font-variant: small-caps;
   display: inline;
   padding: 3px;
 }
-.home div.contents-list-author .contents-list-author-forename {
+#sets-nav div.contents-list-author .contents-list-author-forename {
   font-size: 14pt;
   display: block;
 }
-.home div.contents-list-author a:focus rect {
+#sets-nav div.contents-list-author a:focus rect {
   fill: #5e104a;
 }
-.home div a, .home div a:visited {
+#sets-nav div a,
+#sets-nav div a:visited {
   fill: gold;
 }
-.home svg rect {
+#sets-nav svg rect {
   fill: #3f002f;
 }
-.home svg:hover rect, .home svg:focus rect {
+#sets-nav svg:hover rect,
+#sets-nav svg:focus rect {
   fill: #5e104a;
 }

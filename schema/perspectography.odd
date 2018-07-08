@@ -147,7 +147,7 @@
 
         <elementSpec module="core" ident="resp" mode="change">
           <attList>
-            <attDef ident="n" mode="change">
+            <attDef ident="n" mode="replace">
               <!--<desc>[fill in]</desc>-->
               <datatype>
                 <dataRef name="string"/>

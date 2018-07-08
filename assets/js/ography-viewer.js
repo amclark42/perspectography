@@ -7,7 +7,7 @@
 })();
 
 og.config = {
-  XQUERY_ROOT : 'http://localhost:8080/exist/restxq/perspectography'
+  XQUERY_ROOT : '/exist/restxq/perspectography'
 };
 
 
@@ -15,8 +15,8 @@ og.config = {
  * BACKBONE PROTOTYPE ADDITIONS
  */
 
-/* If the view must include one or more subviews, this function will render 
-  a given subview, making its DOM element ("el") an element within the 
+/* If the view must include one or more subviews, this function will render
+  a given subview, making its DOM element ("el") an element within the
   current view's DOM. */
 Backbone.View.prototype.assign = function(view, selector) {
   view.setElement(this.$(selector)).render();
@@ -264,12 +264,19 @@ og.PersonsViewer = Backbone.View.extend({
   tagName: 'div',
   className: 'dataset-viewer',
   
+  template: _.template(
+    '<p>'
+      +this.collection.total_results
+    +'</p>'
+    +'<div id="ography-view">'
+    +'</div>'),
+  
   initialize: function() {
     this.listenTo(this.collection, 'reset', this.render);
   },
   
   render: function() {
-    this.$el.html(this.collection.total_results);
+    this.$el.html(this.template());
     console.log(this.collection.at(0));
     return this;
   }
@@ -385,7 +392,7 @@ og.Router = Backbone.Router.extend({
   },
   
   getDataset: function(dataset) {
-    if ( this.datasetView === undefined 
+    if ( this.datasetView === undefined
         || dataset !== this.datasetView.model.get('name') ) {
       console.log("Triggered dataset view for " + dataset);
       var datasetModel = this.homePg.collection.get(dataset);

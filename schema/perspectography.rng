@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2017-10-01T12:49:49Z. .
+Schema generated from ODD source 2017-10-07T20:48:27Z. .
 TEI Edition: Version 3.2.0. Last updated on
 	10th July 2017, revision 0fcf651
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
@@ -134,7 +134,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
             </choice>
          </zeroOrMore>
       </element>
-      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e69348-constraint">
+      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e69494-constraint">
          <rule context="tei:content">
             <report test="descendant::*[not(namespace-uri(.) =               ('http://relaxng.org/ns/structure/1.0', 'http://www.tei-c.org/ns/1.0'))]">content descendants must be in the
               namespaces
@@ -162,7 +162,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
             </choice>
          </zeroOrMore>
       </element>
-      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e69675-constraint">
+      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e69821-constraint">
          <rule context="tei:constraint">
             <report test="descendant::*[not(namespace-uri(.) =               ('http://purl.oclc.org/dsdl/schematron', 'http://www.tei-c.org/ns/1.0'))]">constraint descendants must be in the
               namespaces
@@ -190,7 +190,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.2.0/
             </choice>
          </zeroOrMore>
       </element>
-      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e70563-constraint">
+      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d9e70709-constraint">
          <rule context="tei:datatype">
             <report test="descendant::*[not(namespace-uri(.) =               ('http://relaxng.org/ns/structure/1.0', 'http://www.tei-c.org/ns/1.0'))]">datatype descendants must be in the
               namespaces
@@ -4909,8 +4909,65 @@ Elements]</a:documentation>
          <ref name="att.datable.attributes"/>
          <optional>
             <attribute name="n">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) gives a number (or other label) for an element, which is not necessarily unique within the document.</a:documentation>
-               <data type="string"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+Suggested values include: 1] abridger; 2] adapter; 3] artist; 4] author; 5] author of afterword, colophon, etc.; 6] author of introduction, etc.; 7] autographer; 8] colorist; 9] compiler; 10] contributor; 11] copyright holder; 12] cover designer; 13] creator; 14] depicted; 15] editor; 16] editor of compilation; 17] illustrator; 18] inker; 19] lender; 20] letterer; 21] other; 22] photographer; 23] publisher; 24] translator; 25] voice actor; 26] writer of introduction; 27] writer of preface</a:documentation>
+               <choice>
+                  <value>abridger</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>adapter</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>artist</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>author</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>author of afterword, colophon, etc.</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>author of introduction, etc.</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>autographer</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>colorist</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>compiler</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>contributor</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>copyright holder</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>cover designer</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>creator</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>depicted</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>editor</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>editor of compilation</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>illustrator</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>inker</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>lender</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>letterer</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>other</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>photographer</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>publisher</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>translator</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>voice actor</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>writer of introduction</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <value>writer of preface</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">FIX ME</a:documentation>
+                  <data type="string"/>
+               </choice>
             </attribute>
          </optional>
          <empty/>
