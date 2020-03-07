@@ -88,12 +88,12 @@
             <attDef ident="persPronouns" mode="add" usage="rec">
               <desc>lists personal pronouns.</desc>
               <datatype>
-                <dataRef key="string"/>
+                <dataRef name="string"/>
               </datatype>
               <valList type="semi">
-                <valItem ident="he/his"/>
+                <valItem ident="he/him"/>
                 <valItem ident="she/her"/>
-                <valItem ident="they/their"/>
+                <valItem ident="they/them"/>
               </valList>
             </attDef>
             <!-- (sex | gender)/@value -->

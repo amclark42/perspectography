@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-03-07T19:30:08Z. .
+Schema generated from ODD source 2020-03-07T19:50:23Z. .
 TEI Edition: Version 4.0.0. Last updated on
 	13th February 2020, revision ccd19b0ba
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 4.0.0/
@@ -9996,14 +9996,15 @@ Suggested values include: 1] agender; 2] androgynous; 3] bigender; 4] female; 5]
          <optional>
             <attribute name="persPronouns">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">lists personal pronouns.
-Suggested values include: 1] he/his; 2] she/her; 3] they/their</a:documentation>
+Suggested values include: 1] he/him; 2] she/her; 3] they/them</a:documentation>
                <choice>
-                  <value>he/his</value>
+                  <value>he/him</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <value>she/her</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  <value>they/their</value>
+                  <value>they/them</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <data type="string"/>
                </choice>
             </attribute>
          </optional>

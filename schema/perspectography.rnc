@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2020-03-07T19:30:15Z. .
+# Schema generated from ODD source 2020-03-07T19:50:30Z. .
 # TEI Edition: Version 4.0.0. Last updated on
 #	13th February 2020, revision ccd19b0ba
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 4.0.0/
@@ -5845,17 +5845,18 @@ sex =
     }?,
     
     ## lists personal pronouns.
-    ## Suggested values include: 1] he/his; 2] she/her; 3] they/their
+    ## Suggested values include: 1] he/him; 2] she/her; 3] they/them
     attribute persPronouns {
       
       ##
-      "he/his"
+      "he/him"
       | 
         ##
         "she/her"
       | 
         ##
-        "they/their"
+        "they/them"
+      | xsd:string
     }?,
     empty
   }
