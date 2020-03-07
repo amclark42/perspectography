@@ -22,7 +22,8 @@
         attribute <att>persPronouns</att> to <gi>gender</gi>. There are queer authors whose gender 
         identities I can't find (the process of looking feels invasive, too), and I would rather 
         not assume a <att>value</att>. I often can find their pronouns, however, and I would like 
-        to use those instead of <att>value</att>.</change>
+        to use those instead of <att>value</att>. Also, programmatically applied the Library of 
+        Congress relation descriptions to the values listed for <code lang="xpath">//resp/@n</code>.</change>
       <change who="amclark42" when="2019-02-24">Added <gi>catRef</gi> to model.imprintPart, which
         should allow <gi>catRef</gi> as a child of <gi>bibl</gi>. <gi>trait</gi> just feels to me 
         like a poor placeholder for the category reference I really mean.</change>
