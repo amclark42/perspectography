@@ -18,6 +18,14 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="amclark42" when="2020-03-07">Updated to TEI version 4.0.0. Added a custom 
+        attribute <att>persPronouns</att> to <gi>gender</gi>. There are queer authors whose gender 
+        identities I can't find (the process of looking feels invasive, too), and I would rather 
+        not assume a <att>value</att>. I often can find their pronouns, however, and I would like 
+        to use those instead of <att>value</att>.</change>
+      <change who="amclark42" when="2019-02-24">Added <gi>catRef</gi> to model.imprintPart, which
+        should allow <gi>catRef</gi> as a child of <gi>bibl</gi>. <gi>trait</gi> just feels to me 
+        like a poor placeholder for the category reference I really mean.</change>
       <change who="amclark42" when="2017-10-01">Changed added attribute <att>relation</att> to a 
         modification of <att>n</att>.</change>
       <change who="amclark42" when="2017-08-20">Changed <att>relation</att> and <gi>gender</gi>'s 
@@ -38,23 +46,26 @@
   </teiHeader>
   <text>
     <body>
-      <schemaSpec ident="perspectography" source="tei:3.2.0" start="TEI">
+      <schemaSpec ident="perspectography" source="tei:4.0.0" start="TEI">
         <desc>A schema for the use of making various 'ographies.</desc>
         
         <moduleRef key="core" exclude="divGen"/>
         <moduleRef key="tei"/>
         <moduleRef key="header"/>
-        <moduleRef key="textstructure" exclude="div1 div2 div3 div4 div5 
-          div6 div7"/>
+        <moduleRef key="textstructure" exclude="div1 div2 div3 div4 div5 div6 div7"/>
         <moduleRef key="namesdates"/>
         <moduleRef key="linking"/>
         <moduleRef key="tagdocs"/>
         
         <elementSpec module="namesdates" ident="sex" mode="change">
+          <!-- Give the TEI element <sex> the alternate name <gender>, which seems more 
+            accurate to me (and also more comfortable). -->
           <altIdent>gender</altIdent>
           <attList>
+            <!-- (sex | gender)/@evidence -->
             <attDef ident="evidence" mode="replace" usage="rec">
-              <desc>indicates support for the gender identity listed in <att>value</att>. The default value is "conjecture."</desc>
+              <desc>indicates support for the gender identity listed in <att>value</att>. 
+                The default value is "conjecture."</desc>
               <datatype>
                 <dataRef key="data.enumerated"/>
               </datatype>
@@ -68,8 +79,20 @@
                 </valItem>
               </valList>
             </attDef>
-            
-            <attDef ident="value" mode="replace" usage="req">
+            <!-- (sex | gender)/@persPronouns -->
+            <attDef ident="persPronouns" mode="add" usage="rec">
+              <desc></desc>
+              <datatype>
+                <dataRef key="string"/>
+              </datatype>
+              <valList type="semi">
+                <valItem ident="they/their"></valItem>
+                <valItem ident="she/her"></valItem>
+                <valItem ident="he/his"></valItem>
+              </valList>
+            </attDef>
+            <!-- (sex | gender)/@value -->
+            <attDef ident="value" mode="replace" usage="rec">
               <desc>classifies gender identity.</desc>
               <datatype>
                 <dataRef name="string"/>
@@ -142,9 +165,10 @@
         <elementSpec module="header" ident="catRef" mode="change">
           <classes mode="change">
             <memberOf key="att.datable" mode="add"/>
+            <memberOf key="model.imprintPart" mode="add"/>
           </classes>
         </elementSpec>
-
+        
         <elementSpec module="core" ident="resp" mode="change">
           <attList>
             <attDef ident="n" mode="replace">
