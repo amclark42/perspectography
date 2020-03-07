@@ -72,23 +72,27 @@
               <defaultVal>conjecture</defaultVal>
               <valList type="semi">
                 <valItem ident="conjecture">
-                  <desc>The gender identity listed in <att>value</att> was likely selected due to assumptions by someone besides the person in question. As a result, <att>value</att> may be erroneous and presumptive.</desc>
+                  <desc>The gender identity listed in <att>value</att> was likely 
+                    selected due to assumptions by someone besides the person in question. 
+                    As a result, <att>value</att> may be erroneous and presumptive.</desc>
                 </valItem>
                 <valItem ident="self-identification">
-                  <desc>The gender identity listed in <att>value</att> has been explicitly stated or confirmed by the person to whom this classification applies.</desc>
+                  <desc>The gender identity listed in <att>value</att> has been 
+                    explicitly stated or confirmed by the person to whom this 
+                    classification applies.</desc>
                 </valItem>
               </valList>
             </attDef>
             <!-- (sex | gender)/@persPronouns -->
             <attDef ident="persPronouns" mode="add" usage="rec">
-              <desc></desc>
+              <desc>lists personal pronouns.</desc>
               <datatype>
                 <dataRef key="string"/>
               </datatype>
               <valList type="semi">
-                <valItem ident="they/their"></valItem>
-                <valItem ident="she/her"></valItem>
-                <valItem ident="he/his"></valItem>
+                <valItem ident="he/his"/>
+                <valItem ident="she/her"/>
+                <valItem ident="they/their"/>
               </valList>
             </attDef>
             <!-- (sex | gender)/@value -->
@@ -141,10 +145,10 @@
                   <desc>Person whose gender identity does not match their assigned sex.</desc>
                 </valItem>
                 <valItem ident="trans female">
-                  <desc>Transgender person identifies as female.</desc>
+                  <desc>Transgender person who identifies as female.</desc>
                 </valItem>
                 <valItem ident="transfeminine">
-                  <desc>Transgender person identifies as feminine within the gender spectrum.</desc>
+                  <desc>Transgender person who identifies as feminine within the gender spectrum.</desc>
                 </valItem>
                 <valItem ident="trans male">
                   <desc>Transgender person who identifies as male.</desc>
@@ -172,7 +176,6 @@
         <elementSpec module="core" ident="resp" mode="change">
           <attList>
             <attDef ident="n" mode="replace">
-              <!--<desc>[fill in]</desc>-->
               <datatype>
                 <dataRef name="string"/>
               </datatype>
