@@ -160,7 +160,7 @@
                   <desc>Transgender person.</desc>
                 </valItem>
                 <!--<valItem ident="two-spirit">
-                </valItem>-->
+                  </valItem>-->
               </valList>
             </attDef>
           </attList>
@@ -179,87 +179,87 @@
               <datatype>
                 <dataRef name="string"/>
               </datatype>
-              <valList type="semi">
+              <valList type="semi" xml:id="loc-relators">
                 <valItem ident="abridger">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/abr">a person, family, or organization contributing to a resource by shortening or condensing the original work but leaving the nature and content of the original work substantially unchanged. For substantial modifications that result in the creation of a new work, see author.</desc>
                 </valItem>
                 <valItem ident="adapter">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/adp">a person or organization who 1) reworks a musical composition, usually for a different medium, or 2) rewrites novels or stories for motion pictures or other audiovisual medium.</desc>
                 </valItem>
                 <valItem ident="artist">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/art">a person, family, or organization responsible for creating a work by conceiving, and implementing, an original graphic design, drawing, painting, etc. For book illustrators, prefer Illustrator [ill].</desc>
                 </valItem>
                 <valItem ident="author">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/aut">a person, family, or organization responsible for creating a work that is primarily textual in content, regardless of media type (e.g., printed text, spoken word, electronic text, tactile text) or genre (e.g., poems, novels, screenplays, blogs). Use also for persons, etc., creating a new work by paraphrasing, rewriting, or adapting works by another creator such that the modification has substantially changed the nature and content of the original or changed the medium of expression.</desc>
                 </valItem>
                 <valItem ident="author of afterword, colophon, etc.">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/aft">a person or organization responsible for an afterword, postface, colophon, etc. but who is not the chief author of a work.</desc>
                 </valItem>
                 <valItem ident="author of introduction, etc.">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/aui">a person or organization responsible for an introduction, preface, foreword, or other critical introductory matter, but who is not the chief author.</desc>
                 </valItem>
                 <valItem ident="autographer">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/ato">a person whose manuscript signature appears on an item.</desc>
                 </valItem>
                 <valItem ident="colorist">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/clr">a person or organization responsible for applying color to drawings, prints, photographs, maps, moving images, etc.</desc>
                 </valItem>
                 <valItem ident="compiler">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/com">a person, family, or organization responsible for creating a new work (e.g., a bibliography, a directory) through the act of compilation, e.g., selecting, arranging, aggregating, and editing data, information, etc.</desc>
                 </valItem>
                 <valItem ident="contributor">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/ctb">a person, family or organization responsible for making contributions to the resource. This includes those whose work has been contributed to a larger work, such as an anthology, serial publication, or other compilation of individual works. If a more specific role is available, prefer that, e.g. editor, compiler, illustrator.</desc>
                 </valItem>
                 <valItem ident="copyright holder">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/cph">a person or organization to whom copy and legal rights have been granted or transferred for the intellectual content of a work. The copyright holder, although not necessarily the creator of the work, usually has the exclusive right to benefit financially from the sale and use of the work to which the associated copyright protection applies.</desc>
                 </valItem>
                 <valItem ident="cover designer">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/cov">a person or organization responsible for the graphic design of a book cover, album cover, slipcase, box, container, etc. For a person or organization responsible for the graphic design of an entire book, use Book designer; for book jackets, use Bookjacket designer.</desc>
                 </valItem>
                 <valItem ident="creator">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/cre">a person or organization responsible for the intellectual or artistic content of a resource.</desc>
                 </valItem>
                 <valItem ident="depicted">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/dpc">an entity depicted or portrayed in a work, particularly in a work of art.</desc>
                 </valItem>
                 <valItem ident="editor">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/edt">a person, family, or organization contributing to a resource by revising or elucidating the content, e.g., adding an introduction, notes, or other critical matter. An editor may also prepare a resource for production, publication, or distribution. For major revisions, adaptations, etc., that substantially change the nature and content of the original work, resulting in a new work, see author.</desc>
                 </valItem>
                 <valItem ident="editor of compilation">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/edc">a person, family, or organization contributing to a collective or aggregate work by selecting and putting together works, or parts of works, by one or more creators. For compilations of data, information, etc., that result in new works, see compiler.</desc>
                 </valItem>
                 <valItem ident="illustrator">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/ill">a person, family, or organization contributing to a resource by supplementing the primary content with drawings, diagrams, photographs, etc. If the work is primarily the artistic content created by this entity, use artist or photographer.</desc>
                 </valItem>
                 <valItem ident="inker">
-                  <desc>FIX ME</desc>
+                  <desc/>
                 </valItem>
                 <valItem ident="lender">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/len">a person or organization permitting the temporary use of a book, manuscript, etc., such as for photocopying or microfilming.</desc>
                 </valItem>
                 <valItem ident="letterer">
-                  <desc>FIX ME</desc>
+                  <desc/>
                 </valItem>
                 <valItem ident="other">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/oth">a role that has no equivalent in the MARC list.</desc>
                 </valItem>
                 <valItem ident="photographer">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/pht">a person, family, or organization responsible for creating a photographic work.</desc>
                 </valItem>
                 <valItem ident="publisher">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/pbl">a person or organization responsible for publishing, releasing, or issuing a resource.</desc>
                 </valItem>
                 <valItem ident="translator">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/trl">a person or organization who renders a text from one language into another, or from an older form of a language into the modern form.</desc>
                 </valItem>
                 <valItem ident="voice actor">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/vac">an actor contributing to a resource by providing the voice for characters in radio and audio productions and for animated characters in moving image works, as well as by providing voice overs in radio and television commercials, dubbed resources, etc.</desc>
                 </valItem>
                 <valItem ident="writer of introduction">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/win">a person, family, or organization contributing to a resource by providing an introduction to the original work.</desc>
                 </valItem>
                 <valItem ident="writer of preface">
-                  <desc>FIX ME</desc>
+                  <desc source="http://id.loc.gov/vocabulary/relators/wpr">a person, family, or organization contributing to a resource by providing a preface to the original work.</desc>
                 </valItem>
               </valList>
             </attDef>
