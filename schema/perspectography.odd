@@ -58,6 +58,53 @@
         <moduleRef key="linking"/>
         <moduleRef key="tagdocs"/>
         
+        <elementSpec ident="persPronouns" mode="add">
+          <desc>lists personal pronouns.</desc>
+          <classes>
+            <memberOf key="model.persStateLike"/>
+          </classes>
+          <content>
+            <macroRef key="macro.phraseSeq"/>
+          </content>
+          <attList>
+            <attRef class="att.global"/>
+            <attRef class="att.editLike"/>
+            <attRef class="att.datable"/>
+            <attRef class="att.typed"/>
+            <attDef ident="evidence" mode="replace" usage="rec">
+              <desc>indicates support for the listed personal pronouns. The default value 
+                is "conjecture."</desc>
+              <datatype>
+                <dataRef key="data.enumerated"/>
+              </datatype>
+              <defaultVal>conjecture</defaultVal>
+              <valList type="semi">
+                <valItem ident="conjecture">
+                  <desc>The given value was likely selected due to assumptions by someone 
+                    besides the person in question. As a result, the value may be 
+                    erroneous and presumptive.</desc>
+                </valItem>
+                <valItem ident="self-identification">
+                  <desc>The given value has been explicitly stated or confirmed by the 
+                    person to whom this classification applies.</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="value" usage="rec">
+              <desc>supplies a regularized value for personal pronouns.</desc>
+              <datatype minOccurs="1" maxOccurs="unbounded">
+                <dataRef key="teidata.word"/>
+              </datatype>
+              <valList type="semi">
+                <valItem ident="e/em/eir"/>
+                <valItem ident="he/him/his"/>
+                <valItem ident="she/her/hers"/>
+                <valItem ident="they/them/their"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
         <elementSpec module="namesdates" ident="sex" mode="change">
           <!-- Give the TEI element <sex> the alternate name <gender>, which seems more 
             accurate to me (and also more comfortable). -->
@@ -73,34 +120,21 @@
               <defaultVal>conjecture</defaultVal>
               <valList type="semi">
                 <valItem ident="conjecture">
-                  <desc>The gender identity listed in <att>value</att> was likely 
-                    selected due to assumptions by someone besides the person in question. 
-                    As a result, <att>value</att> may be erroneous and presumptive.</desc>
+                  <desc>The given value was likely selected due to assumptions by someone 
+                    besides the person in question. As a result, the value may be 
+                    erroneous and presumptive.</desc>
                 </valItem>
                 <valItem ident="self-identification">
-                  <desc>The gender identity listed in <att>value</att> has been 
-                    explicitly stated or confirmed by the person to whom this 
-                    classification applies.</desc>
+                  <desc>The given value has been explicitly stated or confirmed by the 
+                    person to whom this classification applies.</desc>
                 </valItem>
-              </valList>
-            </attDef>
-            <!-- (sex | gender)/@persPronouns -->
-            <attDef ident="persPronouns" mode="add" usage="rec">
-              <desc>lists personal pronouns.</desc>
-              <datatype>
-                <dataRef name="string"/>
-              </datatype>
-              <valList type="semi">
-                <valItem ident="he/him"/>
-                <valItem ident="she/her"/>
-                <valItem ident="they/them"/>
               </valList>
             </attDef>
             <!-- (sex | gender)/@value -->
             <attDef ident="value" mode="replace" usage="rec">
               <desc>classifies gender identity.</desc>
               <datatype>
-                <dataRef name="string"/>
+                <dataRef key="string"/>
               </datatype>
               <valList type="semi">
                 <valItem ident="agender">

@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2020-03-07T19:50:30Z. .
+# Schema generated from ODD source 2020-03-25T12:43:51Z. .
 # TEI Edition: Version 4.0.0. Last updated on
 #	13th February 2020, revision ccd19b0ba
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 4.0.0/
@@ -50,7 +50,7 @@ anyElement-content =
     (text | anyElement-content)*
   }
   >> sch:pattern [
-       id = "d9e71821-constraint"
+       id = "d9e71802-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -81,7 +81,7 @@ anyElement-datatype =
     (text | anyElement-datatype)*
   }
   >> sch:pattern [
-       id = "d9e73039-constraint"
+       id = "d9e73020-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -1547,6 +1547,7 @@ model.persStateLike =
   | socecStatus
   | state
   | trait
+  | persPronouns
 model.personLike = org | person | personGrp
 model.personPart =
   model.biblLike
@@ -5784,79 +5785,66 @@ sex =
     ## classifies gender identity.
     ## Suggested values include: 1] agender; 2] androgynous; 3] bigender; 4] female; 5] genderfluid; 6] gender-nonconforming; 7] genderqueer; 8] gender-questioning; 9] male; 10] other; 11] non-binary; 12] pangender; 13] trans*; 14] transgender; 15] trans female; 16] transfeminine; 17] trans male; 18] transmasculine; 19] trans person
     attribute value {
-      
-      ## Person identifies as without gender.
-      "agender"
-      | 
-        ## Person identifies or presents as neither masculine nor feminine, but as neutral or mixed gender.
-        "androgynous"
-      | 
-        ## Person identifies as a mix of masculine and feminine genders. This term differs from "pangender" in that it places gender in a masculine/feminine binary, rather than along a diverse spectrum.
-        "bigender"
-      | 
-        ## Person identifies as female.
-        "female"
-      | 
-        ## Person's gender identification is fluid, shifting on the gender spectrum over time.
-        "genderfluid"
-      | 
-        ## Person does not conform to societal divisions of gender. Related to "genderqueer," "gender-questioning," and "non-binary."
-        "gender-nonconforming"
-      | 
-        ## Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "gender-questioning," and "non-binary."
-        "genderqueer"
-      | 
-        ## Person is exploring or does not know how they prefer to present and/or identify within the gender spectrum.
-        "gender-questioning"
-      | 
-        ## Person identifies as male.
-        "male"
-      | 
-        ## Person prefers not to identify their gender.
-        "other"
-      | 
-        ## Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "genderqueer," and "gender-questioning."
-        "non-binary"
-      | 
-        ## Person identifies with many genders. This term differs from "bigender" in that it places gender along a diverse spectrum, rather than in a masculine/feminine binary.
-        "pangender"
-      | 
-        ## An inclusive, umbrella term for persons whose identity or presentation challenges societal gender norms. Includes "transgender," "gender-nonconforming," "genderqueer," "non-binary," etc.
-        "trans*"
-      | 
-        ## Person whose gender identity does not match their assigned sex.
-        "transgender"
-      | 
-        ## Transgender person who identifies as female.
-        "trans female"
-      | 
-        ## Transgender person who identifies as feminine within the gender spectrum.
-        "transfeminine"
-      | 
-        ## Transgender person who identifies as male.
-        "trans male"
-      | 
-        ## Transgender person identifies as masculine within the gender spectrum.
-        "transmasculine"
-      | 
-        ## Transgender person.
-        "trans person"
-      | xsd:string
-    }?,
-    
-    ## lists personal pronouns.
-    ## Suggested values include: 1] he/him; 2] she/her; 3] they/them
-    attribute persPronouns {
-      
-      ##
-      "he/him"
-      | 
-        ##
-        "she/her"
-      | 
-        ##
-        "they/them"
-      | xsd:string
+      list {
+        (
+         ## Person identifies as without gender.
+         "agender"
+         | 
+           ## Person identifies or presents as neither masculine nor feminine, but as neutral or mixed gender.
+           "androgynous"
+         | 
+           ## Person identifies as a mix of masculine and feminine genders. This term differs from "pangender" in that it places gender in a masculine/feminine binary, rather than along a diverse spectrum.
+           "bigender"
+         | 
+           ## Person identifies as female.
+           "female"
+         | 
+           ## Person's gender identification is fluid, shifting on the gender spectrum over time.
+           "genderfluid"
+         | 
+           ## Person does not conform to societal divisions of gender. Related to "genderqueer," "gender-questioning," and "non-binary."
+           "gender-nonconforming"
+         | 
+           ## Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "gender-questioning," and "non-binary."
+           "genderqueer"
+         | 
+           ## Person is exploring or does not know how they prefer to present and/or identify within the gender spectrum.
+           "gender-questioning"
+         | 
+           ## Person identifies as male.
+           "male"
+         | 
+           ## Person prefers not to identify their gender.
+           "other"
+         | 
+           ## Person does not conform to societal divisions of gender. Related to "gender-nonconforming," "genderqueer," and "gender-questioning."
+           "non-binary"
+         | 
+           ## Person identifies with many genders. This term differs from "bigender" in that it places gender along a diverse spectrum, rather than in a masculine/feminine binary.
+           "pangender"
+         | 
+           ## An inclusive, umbrella term for persons whose identity or presentation challenges societal gender norms. Includes "transgender," "gender-nonconforming," "genderqueer," "non-binary," etc.
+           "trans*"
+         | 
+           ## Person whose gender identity does not match their assigned sex.
+           "transgender"
+         | 
+           ## Transgender person who identifies as female.
+           "trans female"
+         | 
+           ## Transgender person who identifies as feminine within the gender spectrum.
+           "transfeminine"
+         | 
+           ## Transgender person who identifies as male.
+           "trans male"
+         | 
+           ## Transgender person identifies as masculine within the gender spectrum.
+           "transmasculine"
+         | 
+           ## Transgender person.
+           "trans person"
+         | xsd:token { pattern = "[^\p{C}\p{Z}]+" })+
+      }
     }?,
     empty
   }
@@ -8215,4 +8203,35 @@ anyElement =
   
   ## indicates the presence of an empty node within a content model [22. Documentation Elements]
   element empty { empty, att.global.attributes, empty }
+persPronouns =
+  
+  ## lists personal pronouns.
+  element persPronouns {
+    macro.phraseSeq,
+    
+    ## supplies a regularized value for personal pronouns.
+    ## Suggested values include: 1] e/em/eir; 2] he/him/his; 3] she/her/hers; 4] they/them/their
+    attribute value {
+      list {
+        (
+         ##
+         "e/em/eir"
+         | 
+           ##
+           "he/him/his"
+         | 
+           ##
+           "she/her/hers"
+         | 
+           ##
+           "they/them/their"
+         | xsd:token { pattern = "[^\p{C}\p{Z}]+" })+
+      }
+    }?,
+    att.global.attributes,
+    att.editLike.attributes,
+    att.datable.attributes,
+    att.typed.attributes,
+    empty
+  }
 start = TEI
