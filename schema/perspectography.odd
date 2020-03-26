@@ -18,6 +18,11 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="amclark42" when="2020-03-26">Incorporated @sydb's suggestions into the 
+        definition for <gi>persPronouns</gi>. (Thanks, Syd!) Added sample encoding.</change>
+      <change who="amclark42" when="2020-03-25">Changed <att>persPronouns</att> to <gi>persPronouns</gi>, 
+        since personal pronouns can be known when gender identity is not. The new element is based 
+        on <gi>tei:sex</gi>.</change>
       <change who="amclark42" when="2020-03-07">Updated to TEI version 4.0.0. Added a custom 
         attribute <att>persPronouns</att> to <gi>gender</gi>. There are queer authors whose gender 
         identities I can't find (the process of looking feels invasive, too), and I would rather 
@@ -61,21 +66,22 @@
         <elementSpec ident="persPronouns" mode="add">
           <desc>lists personal pronouns.</desc>
           <classes>
+            <memberOf key="att.global"/>
+            <memberOf key="att.editLike"/>
+            <memberOf key="att.datable"/>
+            <memberOf key="att.typed"/>
             <memberOf key="model.persStateLike"/>
           </classes>
           <content>
             <macroRef key="macro.phraseSeq"/>
           </content>
           <attList>
-            <attRef class="att.global"/>
-            <attRef class="att.editLike"/>
-            <attRef class="att.datable"/>
-            <attRef class="att.typed"/>
+            <attDef ident="instant" mode="delete"/>
             <attDef ident="evidence" mode="replace" usage="rec">
               <desc>indicates support for the listed personal pronouns. The default value 
                 is "conjecture."</desc>
               <datatype>
-                <dataRef key="data.enumerated"/>
+                <dataRef key="teidata.enumerated"/>
               </datatype>
               <defaultVal>conjecture</defaultVal>
               <valList type="semi">
@@ -93,16 +99,36 @@
             <attDef ident="value" usage="rec">
               <desc>supplies a regularized value for personal pronouns.</desc>
               <datatype minOccurs="1" maxOccurs="unbounded">
-                <dataRef key="teidata.word"/>
+                <dataRef key="teidata.enumerated"/>
               </datatype>
               <valList type="semi">
-                <valItem ident="e/em/eir"/>
+                <valItem ident="e/em/eirs"/>
                 <valItem ident="he/him/his"/>
                 <valItem ident="she/her/hers"/>
-                <valItem ident="they/them/their"/>
+                <valItem ident="they/them/theirs"/>
               </valList>
             </attDef>
           </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <person>
+                <persName>
+                  <forename>SUE</forename>
+                  <addName>the T. rex</addName>
+                </persName>
+                <residence>The Field Museum. Chicago, Illinois, United States.</residence>
+                <persPronouns value="they/them/theirs">they/them</persPronouns>
+                <note>
+                  <cit>
+                    <quote>Specimen FMNH PR 2081. Legendary Fossil. Apex Predator. National Treasure. 
+                      <emph style="text-transform:uppercase; letter-spacing:0.25rem;">Murderbird.</emph></quote>
+                    <bibl>SUEtheTrex, Twitter biography. <ptr target="https://twitter.com/SUEtheTrex"/>. 
+                      Accessed <date when="2020-03-25">March 25th, 2020</date>.</bibl>
+                  </cit>
+                </note>
+              </person>
+            </egXML>
+          </exemplum>
         </elementSpec>
         
         <elementSpec module="namesdates" ident="sex" mode="change">
@@ -133,8 +159,8 @@
             <!-- (sex | gender)/@value -->
             <attDef ident="value" mode="replace" usage="rec">
               <desc>classifies gender identity.</desc>
-              <datatype>
-                <dataRef key="string"/>
+              <datatype minOccurs="1" maxOccurs="unbounded">
+                <dataRef key="teidata.word"/>
               </datatype>
               <valList type="semi">
                 <valItem ident="agender">

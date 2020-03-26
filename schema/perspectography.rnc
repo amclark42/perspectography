@@ -7,7 +7,7 @@ namespace teix = "http://www.tei-c.org/ns/Examples"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# Schema generated from ODD source 2020-03-25T12:43:51Z. .
+# Schema generated from ODD source 2020-03-26T12:41:40Z. .
 # TEI Edition: Version 4.0.0. Last updated on
 #	13th February 2020, revision ccd19b0ba
 # TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 4.0.0/
@@ -50,7 +50,7 @@ anyElement-content =
     (text | anyElement-content)*
   }
   >> sch:pattern [
-       id = "d9e71802-constraint"
+       id = "d9e71812-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -81,7 +81,7 @@ anyElement-datatype =
     (text | anyElement-datatype)*
   }
   >> sch:pattern [
-       id = "d9e73020-constraint"
+       id = "d9e73030-constraint"
        "\x{a}" ~
        "         "
        sch:rule [
@@ -5769,10 +5769,10 @@ sex =
     [ a:defaultValue = "conjecture" ]
     attribute evidence {
       
-      ## The gender identity listed in value was likely selected due to assumptions by someone besides the person in question. As a result, value may be erroneous and presumptive.
+      ## The given value was likely selected due to assumptions by someone besides the person in question. As a result, the value may be erroneous and presumptive.
       "conjecture"
       | 
-        ## The gender identity listed in value has been explicitly stated or confirmed by the person to whom this classification applies.
+        ## The given value has been explicitly stated or confirmed by the person to whom this classification applies.
         "self-identification"
     }?,
     
@@ -8208,14 +8208,30 @@ persPronouns =
   ## lists personal pronouns.
   element persPronouns {
     macro.phraseSeq,
+    att.global.attributes,
+    att.datable.attributes,
+    att.typed.attributes,
+    
+    ## indicates support for the listed personal pronouns. The default value is "conjecture."
+    ## Suggested values include: 1] conjecture; 2] self-identification
+    [ a:defaultValue = "conjecture" ]
+    attribute evidence {
+      
+      ## The given value was likely selected due to assumptions by someone besides the person in question. As a result, the value may be erroneous and presumptive.
+      "conjecture"
+      | 
+        ## The given value has been explicitly stated or confirmed by the person to whom this classification applies.
+        "self-identification"
+      | xsd:token { pattern = "[^\p{C}\p{Z}]+" }
+    }?,
     
     ## supplies a regularized value for personal pronouns.
-    ## Suggested values include: 1] e/em/eir; 2] he/him/his; 3] she/her/hers; 4] they/them/their
+    ## Suggested values include: 1] e/em/eirs; 2] he/him/his; 3] she/her/hers; 4] they/them/theirs
     attribute value {
       list {
         (
          ##
-         "e/em/eir"
+         "e/em/eirs"
          | 
            ##
            "he/him/his"
@@ -8224,14 +8240,10 @@ persPronouns =
            "she/her/hers"
          | 
            ##
-           "they/them/their"
+           "they/them/theirs"
          | xsd:token { pattern = "[^\p{C}\p{Z}]+" })+
       }
     }?,
-    att.global.attributes,
-    att.editLike.attributes,
-    att.datable.attributes,
-    att.typed.attributes,
     empty
   }
 start = TEI
