@@ -18,6 +18,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="amclark42" when="2021-02-27">Updated to TEI version 4.2.0, which includes a canonical 
+        <gi>persPronouns</gi> which can replace my custom element!</change>
       <change who="amclark42" when="2020-03-26">Incorporated @sydb's suggestions into the 
         definition for <gi>persPronouns</gi>. (Thanks, Syd!) Added sample encoding.</change>
       <change who="amclark42" when="2020-03-25">Changed <att>persPronouns</att> to <gi>persPronouns</gi>, 
@@ -52,7 +54,7 @@
   </teiHeader>
   <text>
     <body>
-      <schemaSpec ident="perspectography" source="tei:4.0.0" start="TEI">
+      <schemaSpec ident="perspectography" source="tei:4.2.0" start="TEI">
         <desc>A schema for the use of making various 'ographies.</desc>
         
         <moduleRef key="core" exclude="divGen"/>
@@ -63,7 +65,7 @@
         <moduleRef key="linking"/>
         <moduleRef key="tagdocs"/>
         
-        <elementSpec ident="persPronouns" mode="add">
+        <!--<elementSpec ident="persPronouns" mode="add">
           <desc>lists personal pronouns.</desc>
           <classes>
             <memberOf key="att.global"/>
@@ -129,7 +131,7 @@
               </person>
             </egXML>
           </exemplum>
-        </elementSpec>
+        </elementSpec>-->
         
         <elementSpec module="namesdates" ident="sex" mode="change">
           <!-- Give the TEI element <sex> the alternate name <gender>, which seems more 
